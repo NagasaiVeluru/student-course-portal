@@ -32,6 +32,15 @@ app.use(express.urlencoded({extended:false}));// boiler plate code
 // import router from custom routers
 const userRouter = require('./src/routers/userRouter');
 app.use('/user', userRouter);
+
+// add admin router
+const customerRouter = require('./src/routers/customerRouter');
+app.use('/customer', customerRouter);
+
+// import router from custom routers
+const courseRouter = require('./src/routers/courseRouter');
+app.use('/course', courseRouter);
+
 // add admin router
 const authRouter = require('./src/routers/authRouter');
 app.use('/auth', authRouter);
@@ -43,8 +52,12 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'IFT 458/598 Lab 2', date: new Date()});
 });
 
+app.get('/signin', (req, res) => {
+  res.render('signin');
+ });
+
 //Create a MongoDB Connection String
-const uri = "mongodb+srv://nveluru:rootpassword@cluster0.ij10k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://nveluru:rootpassword@cluster0.ij10k.mongodb.net/IFT598LAB2?retryWrites=true";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.on('Error', ()=>{

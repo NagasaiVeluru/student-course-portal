@@ -20,7 +20,7 @@
     <header>
       <div class="container">
         <div class="logo col-md-5 col-sm-5 col-xs-8">
-          <a href="index.html"><img src="images/IFT458.jpeg" width="40" height="100" alt="logo" /></a><span class="text"> <%=title%> <%=date%></span>
+          <a href="index.html"><img src="images/IFT458.jpeg" width="40" height="100" alt="logo" /></a>
         </div>
         <div class="mobile-togle col-md-12 col-sm-12 col-xs-12">
           <nav class="navbar navbar-default" role="navigation">
@@ -78,7 +78,7 @@
         <div class="sign-in col-md-2">
           <span class="dvider"></span>
           <div class="sign">
-            <a href="signin"><img class="sign-in-img" src="images/avatar.svg" alt="sign-in">
+            <a hrf="#"><img class="sign-in-img" src="images/avatar.svg" alt="sign-in">
               Sign-in</a>
           </div>
         </div>
@@ -97,12 +97,11 @@
           <div class="content-right col-md-4">
            
             <div class="text-center">
-              <form name="signup" action="/auth/signUp" method="post">
-                <div class="col-md-12"><h3>Signup</h3></div>
-                <div class="col-md-12">Username: <input name="username" id="username" style="color: black;"/><br/></div>
-                <div class="col-md-12">Password: <input type="password" name="password" id="password" style="color: black;"/><br/></div>      
-                <div class="col-md-12">Email: <input type="email" name="email" id="email" style="color: black;"/><br/></div>              
-                <div class="col-md-12"><input type="submit" value="SIGN UP TODAY" class="btn btn-primary btn-lg"></input></div>
+              <form name="signin" action="/auth/login" method="post">
+                <div class="col-md-12"><h3>SignIn</h3></div>
+                <div class="col-md-12">Email: <input type="email" name="email" id="email" style="color: black;"/><br/></div>
+                <div class="col-md-12">Password: <input type="password" name="password" id="password" style="color: black;"/><br/></div>                    
+                <div class="col-md-12"><input type="submit" value="SIGN IN" class="btn btn-primary btn-lg"></input></div>
               </form>
             </div>
           </div>

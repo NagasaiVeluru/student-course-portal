@@ -12,21 +12,21 @@ userRouter.use((req,res,next) => {
     }
 })
 
-userRouter.use((req,res,next) => {
-    if(req.user){
-        next();
-    }else{
-        res.redirect('/auth/signIn');
-    }
-})
+// userRouter.use((req,res,next) => {
+//     if(req.user){
+//         next();
+//     }else{
+//          res.redirect('/auth/signIn');
+//     }
+// })
 
-userRouter.use((req,res,next) => {
-    if(req.user){
-        next();
-    }else{
-        res.redirect('/auth/creditCard');
-    }
-})
+// userRouter.use((req,res,next) => {
+//     if(req.user){
+//         next();
+//     }else{
+//         res.redirect('/auth/creditCard');
+//     }
+// })
 
 userRouter.route('/').get((req,res) => {
     User.find()
@@ -36,9 +36,11 @@ userRouter.route('/').get((req,res) => {
 
 userRouter.route('/add').post((req,res) => {
     const username = req.body.username;
-    const User = new User({ username });
+    const email = req.body.email;
+    const password = req.body.password;
+    const user = new User({ username, email, password });
 
-    User.save()
+    user.save()
         .then(() => res.json('User added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });

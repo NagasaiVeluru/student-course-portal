@@ -5,28 +5,28 @@ let User = require('../models/user.js');
 let Course = require('../models/course.js');
 
 courseRouter.use((req,res,next) => {
-    if(req.user){
+    if(req.body.user){
         next();
     }else{
         res.redirect('/');
     }
 })
 
-courseRouter.use((req,res,next) => {
-    if(req.user){
-        next();
-    }else{
-        res.redirect('/auth/signIn');
-    }
-})
+// courseRouter.use((req,res,next) => {
+//     if(req.user){
+//         next();
+//     }else{
+//         res.redirect('/auth/signIn');
+//     }
+// })
 
-courseRouter.use((req,res,next) => {
-    if(req.user){
-        next();
-    }else{
-        res.redirect('/auth/creditCard');
-    }
-})
+// courseRouter.use((req,res,next) => {
+//     if(req.user){
+//         next();
+//     }else{
+//         res.redirect('/auth/creditCard');
+//     }
+// })
 
 courseRouter.route('/').get((req,res) => {
     Course.find()
@@ -36,9 +36,10 @@ courseRouter.route('/').get((req,res) => {
 
 courseRouter.route('/add').post((req,res) => {
     const coursename = req.body.coursename;
-    const Course = new Course({ coursename });
+    const courseID = req.body.courseID
+    const course = new Course({ coursename, courseID });
 
-    Course.save()
+    course.save()
         .then(() => res.json('Course added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
